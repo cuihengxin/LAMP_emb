@@ -296,9 +296,10 @@ class SSDMET(lib.StreamObject):
             fh5['es_dm'] = self.es_dm
         return 
     
-    def lowdin_orth(self,  = False, iaopao = False):
+    def lowdin_orth(self, restore_imp = False, iaopao = False):
         # lowdin orthonormalize
         caolo, cloao = lowdin_orth(self.mol)
+        lo2ao = cloao
         if restore_imp:
             imp_idx = self.imp_idx
             S_ovlp = self.mf_or_cas.get_ovlp()
